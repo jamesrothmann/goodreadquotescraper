@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import requests
+import base64
 from bs4 import BeautifulSoup, NavigableString
 
 # Function to scrape quotes by a specified author from goodreads.com
