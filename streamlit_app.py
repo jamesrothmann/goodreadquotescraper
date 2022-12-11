@@ -124,10 +124,14 @@ if st.button("Extract Quotes"):
     # Add a download button to download the quotes as a CSV file
     st.dataframe(df)
     st.markdown("Click the button below to download the quotes as a CSV file.")
-    if st.button("Download"):
-        st.markdown("Writing quotes to CSV file...")
-        csv = df.to_csv(index=False)
-        b64 = base64.b64encode(csv.encode()).decode()  # some strings <-> bytes conversions necessary here
-        href = f'<a href="data:file/csv;base64,{b64}" download="quotes.csv">Download CSV File</a> (right-click and save as...)'
-        st.markdown(href, unsafe_allow_html=True)
+    # Convert the dataframe to a CSV file
+    csv = df.to_csv(index=False)
 
+# Create the download button
+    st.download_button(
+     "Press to Download",
+      csv,
+      "file.csv",
+      "text/csv",
+      key='download-csv'
+    )
